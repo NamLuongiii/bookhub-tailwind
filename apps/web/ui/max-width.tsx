@@ -1,8 +1,13 @@
-import * as React from 'react';
+import clsx from "clsx";
+import * as React from "react";
 
-export function MaxWidth ({children}: React.HtmlHTMLAttributes<HTMLDivElement>) {
+export function MaxWidth({
+  className,
+  children,
+  ...props
+}: React.HtmlHTMLAttributes<HTMLDivElement>) {
   return (
-    <div className='max-w-lg mx-auto'>
+    <div className={clsx("max-w-5xl mx-auto", className)} {...props}>
       {children}
     </div>
   );

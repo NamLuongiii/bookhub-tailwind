@@ -1,18 +1,15 @@
-'use client'
+"use client";
 
-import * as React from 'react';
-import { toast } from 'sonner';
+import { BookNewFeature } from "@/ui/book-new-feature";
+import { CategoriesFeature } from "@/ui/categories-feature";
+import { MaxWidth } from "@/ui/max-width";
+export interface IAppProps {}
 
-export interface IAppProps {
-}
-
-export default function App (props: IAppProps) {
+export default function App(props: IAppProps) {
   return (
-    <div>
-      <p>app.bookhub.com</p>
-      <button onClick={() => {
-        toast('hello')
-      }}>toast sonner</button>
-    </div>
+    <MaxWidth>
+      <BookNewFeature />
+      <CategoriesFeature />
+    </MaxWidth>
   );
 }

@@ -1,20 +1,23 @@
-import * as React from 'react';
-import { MaxWidth } from './max-width';
-import { CATEGORY_LINKS } from '../lib/ constants';
-import Link from 'next/link';
+import Link from "next/link";
+import { CATEGORY_LINKS } from "../lib/ constants";
+import { MaxWidth } from "./max-width";
+import { Badge } from "./shared/badge";
 
-export interface IFooterProps {
-}
+export interface IFooterProps {}
 
-export function Footer (props: IFooterProps) {
+export function Footer(props: IFooterProps) {
   return (
     <footer>
-        <MaxWidth>
-            <section>
-                <label>Danh mục sách</label>
-                {CATEGORY_LINKS.map(item => <Link key={item.name} href={item.href}><span className='border rounded-sm bg-slate-50 p-2 mr-2'>{item.name}</span></Link>)}
-            </section>
-        </MaxWidth>
+      <MaxWidth className="border-t py-8">
+        <section>
+          <label>Danh mục sách</label>
+          {CATEGORY_LINKS.map((item) => (
+            <Link key={item.name} href={item.href} className="mr-2">
+              <Badge variant="outline">{item.name}</Badge>
+            </Link>
+          ))}
+        </section>
+      </MaxWidth>
     </footer>
   );
 }

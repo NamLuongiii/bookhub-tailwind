@@ -1,8 +1,7 @@
-import * as React from "react";
-import { Feature } from "./feature";
-import { Chunk } from "../lib/utils";
-import { CATEGORY_LINKS } from "../lib/ constants";
 import Link from "next/link";
+import { CATEGORY_LINKS } from "../lib/ constants";
+import { Chunk } from "../lib/utils";
+import { Feature } from "./feature";
 
 export interface ICategoriesFeatureProps {}
 
@@ -10,14 +9,16 @@ export function CategoriesFeature(props: ICategoriesFeatureProps) {
   const chunks = Chunk(CATEGORY_LINKS);
   return (
     <Feature title="Tất cả danh mục">
-      <table> 
+      <table className="*:border">
         <tbody>
           {chunks.map((row, index) => (
             <tr key={index}>
-              {row.map(category => {
+              {row.map((category) => {
                 return (
-                    <td key={category.name}><Link href={category.href}>{category.name}</Link></td>
-                )
+                  <td key={category.name} className="border">
+                    <Link href={category.href}>{category.name}</Link>
+                  </td>
+                );
               })}
             </tr>
           ))}
