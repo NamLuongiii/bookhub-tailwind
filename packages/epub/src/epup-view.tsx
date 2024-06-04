@@ -1,13 +1,14 @@
 import Epub, { Book, Rendition } from "epubjs";
 import Navigation, { NavItem } from "epubjs/types/navigation";
 import { useEffect, useRef, useState } from "react";
-import { EpubNavigation } from "./epub-navigation";
+import { EpubNavigation, IBook } from "./epub-navigation";
 
 export interface IEpubViewProps {
+  bookInfo: IBook;
   onLeave: () => void;
 }
 
-export function EpubView({ onLeave }: IEpubViewProps) {
+export function EpubView({ onLeave, bookInfo }: IEpubViewProps) {
   const book = useRef<Book>();
   const rendition = useRef<Rendition>();
   const element = useRef(null);
@@ -70,12 +71,20 @@ export function EpubView({ onLeave }: IEpubViewProps) {
 
   return (
     <div className="epub-view">
-      <EpubNavigation toc={toc} onLeave={onLeave} onNavigate={handleNavigate} />
+      <EpubNavigation
+        toc={toc}
+        onLeave={onLeave}
+        onNavigate={handleNavigate}
+        book={bookInfo}
+      />
       <div className="epub-view__view">
         <div ref={element}></div>
-        <div className="epub-view__toolbar">
-          <button onClick={handlePrev}>prev</button>|
-          <button onClick={handleNext}>next</button>
+        <div className="epub-view__toolbar space-x-2">
+          <button onClick={onLeave}>Về trang chủ</button>
+          <span>|</span>
+          <button onClick={handlePrev}>Chương trước</button>
+          <span>|</span>
+          <button onClick={handleNext}>Đọc tiếp</button>
         </div>
       </div>
     </div>
