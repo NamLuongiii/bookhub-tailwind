@@ -1,12 +1,16 @@
-import * as React from 'react';
+"use client";
 
-export interface IReadingPageProps {
-}
+import { EpubView } from "@repo/epub";
+import { useRouter } from "next/navigation";
 
-export default function ReadingPage (props: IReadingPageProps) {
+export interface IReadingPageProps {}
+
+export default function ReadingPage(props: IReadingPageProps) {
+  const router = useRouter();
+
   return (
     <div>
-      Reading page
+      <EpubView onLeave={() => router.push("/")} />
     </div>
   );
 }

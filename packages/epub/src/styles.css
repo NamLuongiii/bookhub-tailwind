@@ -1,0 +1,27 @@
+.navigation {
+  padding: 16px;
+  height: 100vh;
+  overflow: auto;
+  border: 1px solid #adabab;
+  width: 300px;
+  position: sticky;
+  top: 0;
+}
+
+.epub-view {
+  display: flex;
+}
+
+.epub-view__view {
+  flex-grow: 1;
+}
+
+.epub-view__toolbar {
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
