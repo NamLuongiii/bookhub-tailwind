@@ -1,29 +1,26 @@
+import { createMultiCategories } from "@/lib";
+import { PaperClip } from "@repo/ui";
 import Link from "next/link";
-import { CATEGORY_LINKS } from "../lib/ constants";
-import { Chunk } from "../lib/utils";
+import { useMemo } from "react";
 import { Feature } from "./feature";
 
 export interface ICategoriesFeatureProps {}
 
 export function CategoriesFeature(props: ICategoriesFeatureProps) {
-  const chunks = Chunk(CATEGORY_LINKS);
+  const categories = useMemo(() => createMultiCategories(20), [props]);
+
   return (
-    <Feature title="Tất cả danh mục">
-      <table className="*:border">
-        <tbody>
-          {chunks.map((row, index) => (
-            <tr key={index}>
-              {row.map((category) => {
-                return (
-                  <td key={category.name} className="border">
-                    <Link href={category.href}>{category.name}</Link>
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <Feature id="categories" title="Tất cả danh mục">
+      <div className="max-w-[700px] rounded-sm flex flex-wrap gap-1">
+        {categories.map((item) => (
+          <Link key={item.id} href={"/list?category=" + item.id}>
+            <div className="text-sm bg-yellow-600 text-white border px-2 flex items-center justify-start gap-1 hover:bg-yellow-700">
+              <PaperClip className="w-4 h-4" />
+              <span>{item.name}</span>
+            </div>
+          </Link>
+        ))}
+      </div>
     </Feature>
   );
 }

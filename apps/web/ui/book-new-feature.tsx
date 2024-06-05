@@ -13,7 +13,7 @@ export interface IBookNewFeatureProps {}
 
 export function BookNewFeature(props: IBookNewFeatureProps) {
   return (
-    <Feature title="Sách mới thêm vào hệ thống">
+    <Feature id="book-new-feature" title="Sách mới thêm vào hệ thống">
       <Carousel>
         <CarouselContent>
           {dumbBooks.map((book) => (

@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 export const dumbBooks = [
   {
     id: "1",
@@ -35,3 +37,29 @@ export const dumbBooks = [
     cover: "https://shorturl.at/YNV4a",
   },
 ];
+
+interface IBook {
+  id: number | string;
+  name: string;
+  cover: string;
+  length: number;
+  chapters: number;
+  review: string;
+  originName: string;
+}
+
+export const createRandomBook = (): IBook => {
+  return {
+    id: faker.string.uuid(),
+    name: faker.lorem.words(12),
+    originName: faker.lorem.words(7),
+    cover: faker.image.urlPlaceholder({ width: 100, height: 145 }),
+    length: faker.number.int({ min: 40, max: 500 }),
+    chapters: faker.number.int({ min: 4, max: 40 }),
+    review: faker.lorem.paragraphs(7),
+  };
+};
+
+export const createMultiRandomBook = (length: number = 7) => {
+  return faker.helpers.multiple(createRandomBook, { count: length });
+};

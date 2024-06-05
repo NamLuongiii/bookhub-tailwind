@@ -10,16 +10,19 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@radix-ui/react-slot": "^1.0.2",
-    "@repo/ui": "workspace:*",
     "@repo/epub": "workspace:*",
+    "@repo/ui": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.1.3",
+    "faker": "link:@types/@faker-js/faker",
     "next": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sonner": "^1.4.41",
+    "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
