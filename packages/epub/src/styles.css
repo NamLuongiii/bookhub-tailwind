@@ -8,18 +8,10 @@
   top: 0;
 }
 
-.epub-view {
-  display: flex;
-}
-
-.epub-view__view {
-  flex-grow: 1;
-}
-
-.epub-view__toolbar {
-  text-align: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
+#viewer.scrolled .epub-container {
+  background: white;
+  /* box-shadow: 0 0 4px #ccc; */
+  padding-bottom: 40px;
 }
 
 @tailwind base;

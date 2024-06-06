@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 
 export interface IReadingPageProps {}
 
-const bookInfo = {
+const book = {
   id: 1,
-  name: 'Alice in strange world',
+  name: "Alice in strange world",
   pages: 40,
   chapters: 12,
   review: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
@@ -15,15 +15,19 @@ const bookInfo = {
   when an unknown printer took a galley of type and scrambled it to make a type specimen book. It 
   has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
   It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently 
-  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`
-}
+  with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+};
 
 export default function ReadingPage(props: IReadingPageProps) {
   const router = useRouter();
 
   return (
     <div>
-      <EpubView onLeave={() => router.push("/")} bookInfo={bookInfo} />
+      <EpubView
+        goHome={() => router.push("/")}
+        goBack={() => router.push("/book/" + book.id)}
+        bookInfo={book}
+      />
     </div>
   );
 }

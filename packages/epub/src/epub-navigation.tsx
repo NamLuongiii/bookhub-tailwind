@@ -1,7 +1,6 @@
-import { BirdIcon, ElipsisHorizontal } from "@repo/ui";
 import { NavItem } from "epubjs";
-import { useState } from "react";
-import { createPortal } from "react-dom";
+import { useContext, useState } from "react";
+import { settingContex } from "./epup-view";
 
 export interface IBook {
   id: number;
@@ -13,19 +12,13 @@ export interface IBook {
 
 export interface INavigationProps {
   toc: NavItem[];
-  onLeave: () => void;
   onNavigate: (href: string) => void;
   book: IBook;
 }
 
-export function EpubNavigation({
-  toc,
-  onLeave,
-  onNavigate,
-  book,
-}: INavigationProps) {
+export function EpubNavigation({ toc, onNavigate, book }: INavigationProps) {
   const [chapter, setChapter] = useState<string>();
-  const [open, setOpen] = useState(true);
+  const { openNavigation } = useContext(settingContex);
 
   const renderNavItems = (toc: NavItem[]) => {
     return (
@@ -55,13 +48,13 @@ export function EpubNavigation({
 
   return (
     <div
-      className="bg-slate-50 w-[300px] shrink-0 h-screen overflow-auto border sticky top-0 hidden aria-expanded:block space-y-4"
-      aria-expanded={open}
+      className="bg-slate-50 w-[300px] shrink-0 h-[calc(100vh-51px)] overflow-auto border sticky top-[51px] hidden aria-expanded:block space-y-4 py-4"
+      aria-expanded={openNavigation}
     >
-      <header className="p-4 text-center">
-        <div onClick={onLeave}>Logo</div>
+      <header className="text-center">
+        <div>Mục lục</div>
       </header>
-      <div>{renderNavItems(toc)}</div>
+      <div className="text-[14px]">{renderNavItems(toc)}</div>
 
       <div className="m-4 border space-y-2 text-sm">
         <h2 className=" italic">Thông tin sách</h2>
@@ -81,26 +74,6 @@ export function EpubNavigation({
           Chi tiết
         </a>
       </div>
-
-      <div className="mt-4 text-center bg-gray-100 sticky bottom-0 flex items-center *:py-2 *:basis-1/2 *:h-full *:flex *:justify-center *:items-center *:cursor-pointer">
-        <div
-          className="bg-blue-500 text-white hover:bg-blue-600"
-          onClick={() => setOpen(false)}
-        >
-          Ẩn
-        </div>
-        <div className="hover:bg-gray-200">Cài đặt</div>
-      </div>
-      {createPortal(
-        <div
-          className="fixed top-4 left-4 p-2 bg-gray-100/50 rounded-sm cursor-pointer active:bg-gray-200 aria-expanded:invisible visible z-50"
-          aria-expanded={open}
-          onClick={() => setOpen(true)}
-        >
-          <BirdIcon className="w-8 h-8" />
-        </div>,
-        document.body
-      )}
     </div>
   );
 }
