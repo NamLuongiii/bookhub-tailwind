@@ -7,7 +7,10 @@ export function MaxWidth({
   ...props
 }: React.HtmlHTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={clsx("max-w-5xl mx-auto", className)} {...props}>
+    <div
+      className={clsx("max-w-5xl mx-auto px-4 lg:px-0", className)}
+      {...props}
+    >
       {children}
     </div>
   );

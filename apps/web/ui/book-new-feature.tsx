@@ -7,7 +7,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./shared/carousel";
+} from "@repo/ui";
 
 export interface IBookNewFeatureProps {}
 

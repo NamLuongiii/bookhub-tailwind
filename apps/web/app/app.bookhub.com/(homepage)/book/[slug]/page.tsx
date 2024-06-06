@@ -39,15 +39,28 @@ export default function BookPage(props: IBookPageProps) {
               ))}
             </div>
           </div>
-          <p className="italic">Thông tin sách</p>
-          <div>Tên gốc {book.originName}</div>
-          <div>Length {book.length} trang</div>
-          <div>Số chương {book.chapters}</div>
+
+          <div className="space-x-2">
+            <span className="italic">Tên gốc</span>
+            <span>{book.originName}</span>
+          </div>
+
+          <div className="space-x-2">
+            <span className="italic">Số trang</span>
+            <span>{book.length}</span>
+          </div>
+          <div className="space-x-2">
+            <span className="italic">Số chương</span>
+            <span>{book.chapters}</span>
+          </div>
           <div>
             <p className="italic">Danh mục sách</p>
             <div className="space-x-2">
               {categories.map((category) => (
-                <AppLink key={category.id} href={"/category/" + category.id}>
+                <AppLink
+                  key={category.id}
+                  href={"/list?category=" + category.id}
+                >
                   {category.name}
                 </AppLink>
               ))}

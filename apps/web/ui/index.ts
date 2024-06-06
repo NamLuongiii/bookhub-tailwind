@@ -5,8 +5,3 @@ export * from "./footer";
 export * from "./header";
 export * from "./loading";
 export * from "./max-width";
-export * from "./shared/badge";
-
-// shared
-export * from "./shared/badge";
-export * from "./shared/button";

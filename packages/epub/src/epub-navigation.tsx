@@ -4,21 +4,26 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 
 export interface IBook {
-  id: number
-  name: string 
-  pages: number
-  chapters: number
-  review: string
+  id: number;
+  name: string;
+  pages: number;
+  chapters: number;
+  review: string;
 }
 
 export interface INavigationProps {
   toc: NavItem[];
   onLeave: () => void;
   onNavigate: (href: string) => void;
-  book: IBook
+  book: IBook;
 }
 
-export function EpubNavigation({ toc, onLeave, onNavigate, book }: INavigationProps) {
+export function EpubNavigation({
+  toc,
+  onLeave,
+  onNavigate,
+  book,
+}: INavigationProps) {
   const [chapter, setChapter] = useState<string>();
   const [open, setOpen] = useState(true);
 
@@ -66,8 +71,15 @@ export function EpubNavigation({ toc, onLeave, onNavigate, book }: INavigationPr
           <span>|</span>
           <div>{book.pages} trang</div>
         </div>
-        <div className="text-wrap whitespace-normal text-ellipsis overflow-hidden line-clamp-3">{book.review}</div>
-        <a href={'/book/' + book.id} className="text-blue-500 underline text-sm">Chi tiết</a>
+        <div className="text-wrap whitespace-normal text-ellipsis overflow-hidden line-clamp-3">
+          {book.review}
+        </div>
+        <a
+          href={"/book/" + book.id}
+          className="text-blue-500 underline text-sm"
+        >
+          Chi tiết
+        </a>
       </div>
 
       <div className="mt-4 text-center bg-gray-100 sticky bottom-0 flex items-center *:py-2 *:basis-1/2 *:h-full *:flex *:justify-center *:items-center *:cursor-pointer">
